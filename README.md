@@ -52,3 +52,39 @@ This project investigates bugs in an AI-generated number guessing game built wit
 - Corrected the high/low hint logic.
 - Removed the inconsistent secret-number type conversion.
 - Fixed the new game reset logic to reset attempts, score, history, and status correctly.
+
+## Purpose
+This project is a Streamlit number guessing game designed to help students debug AI-generated code. The goal was to investigate broken behavior, identify reproducible bugs, fix the logic, and document how AI suggestions were evaluated.
+
+## Reproducible Bugs Found
+1. **Hint logic was reversed**
+   - Expected: if the guess is too high, the game should tell the player to go lower.
+   - Actual: the game returned "Too High" but displayed "Go HIGHER!".
+
+2. **Secret number handling was inconsistent**
+   - Expected: the secret number should always stay as an integer during comparison.
+   - Actual: on some attempts, the code converted the secret number to a string, which could cause inconsistent comparison behavior.
+
+3. **New game did not reset correctly**
+   - Expected: starting a new game should reset attempts, score, history, and respect the selected difficulty range.
+   - Actual: the new game logic only partially reset state and always used a 1–100 range.
+
+4. **Displayed range text was incorrect**
+   - Expected: the UI should display the current difficulty range.
+   - Actual: it always said “Guess a number between 1 and 100” even when a different difficulty was selected.
+
+## Fixes Applied
+- Moved helper functions into `logic_utils.py`.
+- Corrected hint logic in `check_guess()`.
+- Removed inconsistent secret-number type conversion.
+- Fixed new game reset logic to reset all game state values correctly.
+- Updated the displayed range text to match the selected difficulty.
+
+## Evidence of Debugging
+I reviewed the app flow in `app.py` and the helper functions in `logic_utils.py` to trace how guesses were parsed, compared, and scored. I used this to identify where the incorrect hints, inconsistent secret handling, and reset issues were happening.
+
+## Demo
+[Insert screenshot of fixed winning game here]
+
+## Pytest
+[Insert screenshot of pytest results here if available]
