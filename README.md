@@ -36,3 +36,19 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 🚀 Stretch Features
 
 - [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+
+## 📝 Document Your Experience
+
+This project investigates bugs in an AI-generated number guessing game built with Streamlit.
+
+### Bugs Found
+- Hint logic was reversed and gave incorrect guidance.
+- The secret number comparison behaved inconsistently because it was sometimes converted into a string.
+- Starting a new game did not fully reset the game state.
+- The displayed guessing range did not always match the selected difficulty.
+
+### Fixes Applied
+- Refactored helper functions into `logic_utils.py`.
+- Corrected the high/low hint logic.
+- Removed the inconsistent secret-number type conversion.
+- Fixed the new game reset logic to reset attempts, score, history, and status correctly.
